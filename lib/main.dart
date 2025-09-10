@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:price_list/constants/colors.dart';
-import 'package:price_list/home_page_view.dart';
+import 'package:price_list/ui/home_page_view.dart';
 
 void main() {
   runApp(const MyApp());
