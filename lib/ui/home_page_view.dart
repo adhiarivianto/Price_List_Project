@@ -1,5 +1,6 @@
 import 'package:animated_segmented_tab_control/animated_segmented_tab_control.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:price_list/constants/constants.dart';
 import 'package:price_list/ui/monthly_report_view.dart';
 import 'package:price_list/ui/stock_item_page_view.dart';
@@ -17,14 +18,17 @@ class _HomePageViewState extends State<HomePageView>
 
   @override
   void initState() {
-    super.initState();
     _tabController = TabController(length: 2, vsync: this);
+
+    super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
+    Hive.close();
     _tabController.dispose();
+
+    super.dispose();
   }
 
   @override
