@@ -11,6 +11,6 @@ class StockItemPageView extends StatefulWidget {
 class _StockItemPageViewState extends State<StockItemPageView> {
   @override
   Widget build(BuildContext context) {
-    return BaseCard(cardContent: Container());
+    return BaseCard(cardContent: Column(children: []));
   }
 }

@@ -12,7 +12,7 @@ class BaseCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Color(ColorConstants.funGreen),
-          borderRadius: BorderRadius.circular(0), // round all corners
+          borderRadius: BorderRadius.circular(15), // round all corners
         ),
         child: cardContent,
       ),
