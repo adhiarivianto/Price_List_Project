@@ -1,6 +1,6 @@
 import 'package:animated_segmented_tab_control/animated_segmented_tab_control.dart';
 import 'package:flutter/material.dart';
-import 'package:price_list/constants/colors.dart';
+import 'package:price_list/constants/constants.dart';
 import 'package:price_list/ui/monthly_report_view.dart';
 import 'package:price_list/ui/stock_item_page_view.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:price_list/constants/colors.dart';
+import 'package:price_list/constants/constants.dart';
 import 'package:price_list/ui/home_page_view.dart';
 
 void main() {
