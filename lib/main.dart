@@ -26,6 +26,9 @@ class MyApp extends StatelessWidget {
       title: 'Price Listing App',
 
       theme: ThemeData(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         scaffoldBackgroundColor: Color(ColorConstants.wildSand),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color(ColorConstants.pastelGreen),

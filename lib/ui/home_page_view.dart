@@ -1,4 +1,4 @@
-import 'package:animated_segmented_tab_control/animated_segmented_tab_control.dart';
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:price_list/constants/constants.dart';
@@ -15,6 +15,7 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -53,39 +54,64 @@ class _HomePageViewState extends State<HomePageView>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(child: Container()),
-                    Expanded(
-                      child: SegmentedTabControl(
-                        controller: _tabController,
-                        tabTextColor: Color(ColorConstants.tundora),
-                        textStyle: Theme.of(context).textTheme.bodyMedium
-                            ?.copyWith(
-                              color: Color(ColorConstants.wildSand),
-                              fontWeight: FontWeight.bold,
-                            ),
-                        selectedTabTextColor: Color(ColorConstants.wildSand),
-                        splashHighlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        barDecoration: const BoxDecoration(
-                          color: Color(ColorConstants.silverChalice),
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                    CustomSlidingSegmentedControl(
+                      initialValue: _selectedIndex + 1,
+                      children: {
+                        1: Text(
+                          'Stock Item',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: (_selectedIndex + 1) == 1
+                                    ? Color(ColorConstants.wildSand)
+                                    : Color(ColorConstants.tundora),
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
-                        indicatorDecoration: const BoxDecoration(
-                          color: Color(ColorConstants.funGreen),
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                        2: Text(
+                          'Monthly Report',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: (_selectedIndex + 1) == 2
+                                    ? Color(ColorConstants.wildSand)
+                                    : Color(ColorConstants.tundora),
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
-                        tabs: _tabs,
+                      },
+                      onValueChanged: (v) {
+                        _selectedIndex = v - 1;
+                        setState(() {});
+                      },
+                      decoration: BoxDecoration(
+                        color: Color(ColorConstants.silverChalice),
+                        borderRadius: BorderRadius.circular(
+                          SizeConstants.standardRadius,
+                        ),
+                      ),
+                      innerPadding: EdgeInsets.zero,
+                      fixedWidth: 200,
+                      thumbDecoration: BoxDecoration(
+                        color: Color(ColorConstants.funGreen),
+                        borderRadius: BorderRadius.circular(
+                          SizeConstants.standardRadius,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3.0,
+                            spreadRadius: 1.0,
+                            offset: Offset(0.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(child: Container()),
                   ],
                 ),
                 const SizedBox(height: 15),
                 Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    physics: const NeverScrollableScrollPhysics(),
+                  child: IndexedStack(
+                    index: _selectedIndex,
                     children: _tabPages,
                   ),
                 ),
@@ -96,11 +122,6 @@ class _HomePageViewState extends State<HomePageView>
       ),
     );
   }
-
-  List<SegmentTab> get _tabs => [
-    SegmentTab(label: 'Stock Item'),
-    SegmentTab(label: 'Monthly Report'),
-  ];
 
   List<Widget> get _tabPages => [StockItemPageView(), MonthlyReportView()];
 }

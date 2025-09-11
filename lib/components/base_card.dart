@@ -14,7 +14,7 @@ class BaseCard extends StatelessWidget {
           color: Color(ColorConstants.funGreen),
           borderRadius: BorderRadius.circular(15), // round all corners
         ),
-        child: cardContent,
+        child: Padding(padding: EdgeInsets.all(10), child: cardContent),
       ),
     );
   }
