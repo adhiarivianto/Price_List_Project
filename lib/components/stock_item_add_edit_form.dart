@@ -67,6 +67,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text("Add New Item"),
+      backgroundColor: Color(ColorConstants.wildSand),
       content: ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: MediaQuery.of(context).size.width * 0.5,
@@ -77,6 +78,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
           key: _formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
                 controller: _nameController,
@@ -134,7 +136,10 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                         suffixIcon: _priceController.text.isNotEmpty
                             ? IconButton(
-                                icon: const Icon(Icons.clear),
+                                icon: const Icon(
+                                  Icons.clear,
+                                  size: SizeConstants.mediumIcon,
+                                ),
                                 onPressed: () {
                                   _priceController.clear();
                                   setState(() {});
@@ -176,7 +181,10 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                         suffixIcon: _marginController.text.isNotEmpty
                             ? IconButton(
-                                icon: const Icon(Icons.clear),
+                                icon: const Icon(
+                                  Icons.clear,
+                                  size: SizeConstants.mediumIcon,
+                                ),
                                 onPressed: () {
                                   _marginController.clear();
                                   setState(() {});
@@ -219,7 +227,10 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                         suffixIcon: _stockController.text.isNotEmpty
                             ? IconButton(
-                                icon: const Icon(Icons.clear),
+                                icon: const Icon(
+                                  Icons.clear,
+                                  size: SizeConstants.mediumIcon,
+                                ),
                                 onPressed: () {
                                   _stockController.clear();
                                   setState(() {});
@@ -249,6 +260,36 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(height: SizeConstants.formSpacing),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Container(
+                          width: double.infinity,
+                          color: Colors.amber,
+                        ),
+                      );
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(
+                    ColorConstants.funGreen,
+                  ), // background color
+                  foregroundColor: Color(ColorConstants.wildSand), // text color
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.upload, size: SizeConstants.mediumIcon),
+                    Text('Choose Image'),
+                  ],
+                ),
               ),
             ],
           ),
