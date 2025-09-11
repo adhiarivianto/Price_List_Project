@@ -123,5 +123,8 @@ class _HomePageViewState extends State<HomePageView>
     );
   }
 
-  List<Widget> get _tabPages => [StockItemPageView(), MonthlyReportView()];
+  List<Widget> get _tabPages => [
+    Column(children: [StockItemPageView()]),
+    Column(children: [MonthlyReportView()]),
+  ];
 }

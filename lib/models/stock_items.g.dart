@@ -17,25 +17,31 @@ class StockItemsAdapter extends TypeAdapter<StockItems> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return StockItems(
-      productImage: fields[0] as Uint8List?,
-      productName: fields[1] as String,
-      marketPrice: fields[2] as double,
-      profitMargin: fields[3] as double,
+      productId: fields[0] as String,
+      productImage: fields[1] as Uint8List?,
+      productName: fields[2] as String,
+      marketPrice: fields[3] as double,
+      profitMargin: fields[4] as double,
+      stockItem: fields[5] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, StockItems obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.productImage)
+      ..write(obj.productId)
       ..writeByte(1)
-      ..write(obj.productName)
+      ..write(obj.productImage)
       ..writeByte(2)
-      ..write(obj.marketPrice)
+      ..write(obj.productName)
       ..writeByte(3)
-      ..write(obj.profitMargin);
+      ..write(obj.marketPrice)
+      ..writeByte(4)
+      ..write(obj.profitMargin)
+      ..writeByte(5)
+      ..write(obj.stockItem);
   }
 
   @override

@@ -39,6 +39,7 @@ dependencies:
   hive_generator: ^2.0.1
   custom_sliding_segmented_control: ^1.8.5
   file_picker: ^10.3.2
+  flutter_multi_formatter: ^2.13.10
 
 dev_dependencies:
   flutter_test:
