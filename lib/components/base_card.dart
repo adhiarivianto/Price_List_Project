@@ -10,6 +10,8 @@ class BaseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           color: Color(ColorConstants.funGreen),
           borderRadius: BorderRadius.circular(15), // round all corners
