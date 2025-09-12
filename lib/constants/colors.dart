@@ -6,4 +6,6 @@ class ColorConstants {
   static const int silverChalice = 0xFFb0b0b0;
   static const int tundora = 0xFF444444;
   static const int stacks = 0xFF858985;
+  static const int boulder = 0xFF7b7b7b;
+  static const int redRoses = 0xFFAB0001;
 }

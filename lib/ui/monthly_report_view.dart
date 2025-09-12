@@ -22,10 +22,12 @@ class _MonthlyReportViewState extends State<MonthlyReportView> {
 
     if (result != null) {
       if (result.files.single.bytes != null) {
+        // bytes -> usually for browser
         setState(() {
           imageBytes = result.files.single.bytes!;
         });
       } else if (result.files.single.path != null) {
+        //path -> works for desktop app
         setState(() {
           imageBytes = File(result.files.single.path!).readAsBytesSync();
         });
@@ -41,12 +43,7 @@ class _MonthlyReportViewState extends State<MonthlyReportView> {
         children: [
           if (imageBytes != null)
             InteractiveViewer(
-              child: Image.memory(
-                imageBytes!,
-                width: 200,
-                height: 200,
-                fit: BoxFit.cover,
-              ),
+              child: Image.memory(imageBytes!, fit: BoxFit.cover),
             )
           else
             Text("No image selected"),
