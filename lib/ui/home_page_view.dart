@@ -53,54 +53,62 @@ class _HomePageViewState extends State<HomePageView>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomSlidingSegmentedControl(
-                        initialValue: _selectedIndex + 1,
-                        children: {
-                          1: Text(
-                            'Stock Item',
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: (_selectedIndex + 1) == 1
-                                      ? Color(ColorConstants.wildSand)
-                                      : Color(ColorConstants.tundora),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          2: Text(
-                            'Monthly Report',
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: (_selectedIndex + 1) == 2
-                                      ? Color(ColorConstants.wildSand)
-                                      : Color(ColorConstants.tundora),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        },
-                        onValueChanged: (v) {
-                          _selectedIndex = v - 1;
-                          setState(() {});
-                        },
-                        decoration: BoxDecoration(
-                          color: Color(ColorConstants.silverChalice),
-                          borderRadius: BorderRadius.circular(
-                            SizeConstants.standardRadius,
-                          ),
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
                         ),
-                        innerPadding: EdgeInsets.zero,
-                        fixedWidth: 200,
-                        thumbDecoration: BoxDecoration(
-                          color: Color(ColorConstants.funGreen),
-                          borderRadius: BorderRadius.circular(
-                            SizeConstants.standardRadius,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 3.0,
-                              spreadRadius: 1.0,
-                              offset: Offset(0.0, 2.0),
+                        child: CustomSlidingSegmentedControl(
+                          initialValue: _selectedIndex + 1,
+
+                          children: {
+                            1: Text(
+                              'Stock Item',
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    color: (_selectedIndex + 1) == 1
+                                        ? const Color(ColorConstants.wildSand)
+                                        : const Color(ColorConstants.tundora),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
-                          ],
+                            2: Text(
+                              'Monthly Report',
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    color: (_selectedIndex + 1) == 2
+                                        ? const Color(ColorConstants.wildSand)
+                                        : const Color(ColorConstants.tundora),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          },
+                          onValueChanged: (v) {
+                            _selectedIndex = v - 1;
+                            setState(() {});
+                          },
+                          decoration: BoxDecoration(
+                            color: const Color(ColorConstants.silverChalice),
+                            borderRadius: BorderRadius.circular(
+                              SizeConstants.standardRadius,
+                            ),
+                          ),
+                          innerPadding: EdgeInsets.zero,
+                          fixedWidth: 200,
+                          thumbDecoration: BoxDecoration(
+                            color: const Color(ColorConstants.funGreen),
+                            borderRadius: BorderRadius.circular(
+                              SizeConstants.standardRadius,
+                            ),
+                            boxShadow: [
+                              const BoxShadow(
+                                blurRadius: 3.0,
+                                spreadRadius: 1.0,
+                                offset: Offset(0.0, 2.0),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -117,7 +125,7 @@ class _HomePageViewState extends State<HomePageView>
   }
 
   List<Widget> get _tabPages => [
-    Column(children: [StockItemPageView()]),
-    Column(children: [MonthlyReportView()]),
+    const Column(children: [StockItemPageView()]),
+    const Column(children: [MonthlyReportView()]),
   ];
 }

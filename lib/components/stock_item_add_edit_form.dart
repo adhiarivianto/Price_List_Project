@@ -70,8 +70,8 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Add New Item"),
-      backgroundColor: Color(ColorConstants.wildSand),
+      title: const Text("Add New Item"),
+      backgroundColor: const Color(ColorConstants.wildSand),
       content: ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: MediaQuery.of(context).size.width * 0.5,
@@ -107,7 +107,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                     ),
                   ),
                 ),
-                SizedBox(height: SizeConstants.formRegularSpacing),
+                const SizedBox(height: SizeConstants.formRegularSpacing),
                 Row(
                   children: [
                     Expanded(
@@ -154,7 +154,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                       ),
                     ),
-                    SizedBox(width: SizeConstants.formRegularSpacing),
+                    const SizedBox(width: SizeConstants.formRegularSpacing),
                     Expanded(
                       child: TextFormField(
                         controller: _marginController,
@@ -201,7 +201,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                     ),
                   ],
                 ),
-                SizedBox(height: SizeConstants.formRegularSpacing),
+                const SizedBox(height: SizeConstants.formRegularSpacing),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -246,7 +246,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                       ),
                     ),
-                    SizedBox(width: SizeConstants.formRegularSpacing),
+                    const SizedBox(width: SizeConstants.formRegularSpacing),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -257,7 +257,9 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: SizeConstants.formSmallSpacing),
+                          const SizedBox(
+                            height: SizeConstants.formSmallSpacing,
+                          ),
                           Text(
                             toCurrencyString(_profitCalculation.toString()),
                             style: Theme.of(context).textTheme.labelLarge,
@@ -267,7 +269,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                     ),
                   ],
                 ),
-                SizedBox(height: SizeConstants.formRegularSpacing),
+                const SizedBox(height: SizeConstants.formRegularSpacing),
                 Column(
                   children: [
                     if (_imageInput != null) ...[
@@ -287,7 +289,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                           height: 200,
                         ),
                       ),
-                      SizedBox(height: SizeConstants.formSmallSpacing),
+                      const SizedBox(height: SizeConstants.formSmallSpacing),
                     ],
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -295,13 +297,13 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ElevatedButton(
                           onPressed: () => pickImage(),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(
+                            backgroundColor: const Color(
                               ColorConstants.funGreen,
                             ), // background color
-                            foregroundColor: Color(
+                            foregroundColor: const Color(
                               ColorConstants.wildSand,
                             ), // text color
-                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                           ),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
@@ -316,7 +318,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ),
                         if (_imageInput != null) ...[
                           Padding(
-                            padding: EdgeInsetsGeometry.only(
+                            padding: const EdgeInsetsGeometry.only(
                               left: SizeConstants.formSmallSpacing,
                             ),
                             child: IconButton(
@@ -324,7 +326,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                                 _imageInput = null;
                                 setState(() {});
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete,
                                 color: Color(ColorConstants.boulder),
                                 size: SizeConstants.largeIcon,
@@ -346,7 +348,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(
+          child: const Text(
             'Cancel',
             style: TextStyle(color: Color(ColorConstants.stacks)),
           ),
@@ -358,7 +360,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
               Navigator.of(context).pop();
             }
           },
-          child: Text(
+          child: const Text(
             'Submit',
             style: TextStyle(color: Color(ColorConstants.funGreen)),
           ),
@@ -401,7 +403,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
 
   Widget _imageViewerDialog() {
     return AlertDialog(
-      backgroundColor: Color(ColorConstants.wildSand),
+      backgroundColor: const Color(ColorConstants.wildSand),
       content: ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: MediaQuery.of(context).size.width * 0.25,
@@ -420,7 +422,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
 
   Future<void> _submitForm() async {
     final StockItems payload = StockItems(
-      productId: Uuid().v4(),
+      productId: const Uuid().v4(),
       productImage: _imageInput,
       productName: _nameInput,
       marketPrice: _priceInput,

@@ -19,18 +19,24 @@ class BaseCard extends StatelessWidget {
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: Color(ColorConstants.funGreen),
+                color: const Color(ColorConstants.funGreen),
                 borderRadius: BorderRadius.circular(15), // round all corners
               ),
-              child: Padding(padding: EdgeInsets.all(15), child: cardContent),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: cardContent,
+              ),
             ),
           )
         : Container(
             decoration: BoxDecoration(
-              color: Color(ColorConstants.funGreen),
+              color: const Color(ColorConstants.funGreen),
               borderRadius: BorderRadius.circular(15), // round all corners
             ),
-            child: Padding(padding: EdgeInsets.all(15), child: cardContent),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: cardContent,
+            ),
           );
   }
 }

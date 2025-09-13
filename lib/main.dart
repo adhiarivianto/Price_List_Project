@@ -24,14 +24,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Price Listing App',
-
       theme: ThemeData(
-        hoverColor: Colors.transparent,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        scaffoldBackgroundColor: Color(ColorConstants.wildSand),
+        scaffoldBackgroundColor: const Color(ColorConstants.wildSand),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color(ColorConstants.pastelGreen),
+          seedColor: const Color(ColorConstants.pastelGreen),
         ),
       ),
       home: const HomePageView(),

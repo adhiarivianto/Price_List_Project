@@ -41,16 +41,18 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                 height: 34, // same as button height
                 child: TextField(
                   decoration: InputDecoration(
-                    fillColor: Color(ColorConstants.wildSand),
+                    fillColor: const Color(ColorConstants.wildSand),
                     filled: true,
                     hintText: 'Search',
-                    hintStyle: TextStyle(color: Color(ColorConstants.funGreen)),
+                    hintStyle: const TextStyle(
+                      color: Color(ColorConstants.funGreen),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         SizeConstants.standardRadius,
                       ),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search,
                       size: SizeConstants.mediumIcon,
                       color: Color(ColorConstants.funGreen),
@@ -65,15 +67,17 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return StockItemAddEditForm();
+                      return const StockItemAddEditForm();
                     },
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(
+                  backgroundColor: const Color(
                     ColorConstants.wildSand,
                   ), // background color
-                  foregroundColor: Color(ColorConstants.funGreen), // text color
+                  foregroundColor: const Color(
+                    ColorConstants.funGreen,
+                  ), // text color
                 ),
                 child: const Row(
                   children: [
@@ -85,7 +89,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
             ],
           ),
 
-          SizedBox(height: SizeConstants.formRegularSpacing),
+          const SizedBox(height: SizeConstants.formRegularSpacing),
           ValueListenableBuilder<Box<StockItems>>(
             valueListenable: Boxes.getStockItemBoxMethod().listenable(),
             builder: (context, box, _) {
@@ -96,7 +100,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                 context: context,
               );
               return SfDataGridTheme(
-                data: SfDataGridThemeData(
+                data: const SfDataGridThemeData(
                   gridLineColor: Color(ColorConstants.silverChalice),
                   gridLineStrokeWidth: 1.5,
                   selectionColor: Color(ColorConstants.lightGreen),
@@ -133,7 +137,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                           details.rowColumnIndex.columnIndex !=
                               dataSource.columns.length - 1) {
                         // After sorting happens, schedule scroll reset
-                        Future.delayed(Duration(milliseconds: 50), () {
+                        Future.delayed(const Duration(milliseconds: 50), () {
                           _controller.scrollToVerticalOffset(0);
                         });
                       }
@@ -141,7 +145,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
 
                     //styling
                     gridLinesVisibility: GridLinesVisibility.horizontal,
-                    headerGridLinesVisibility: GridLinesVisibility.horizontal,
+                    headerGridLinesVisibility: GridLinesVisibility.both,
                   ),
                 ),
               );
