@@ -91,7 +91,10 @@ class _StockItemPageViewState extends State<StockItemPageView> {
             builder: (context, box, _) {
               final listItem = box.values.toList();
 
-              final dataSource = StockItemDataGridSource(data: listItem);
+              final dataSource = StockItemDataGridSource(
+                data: listItem,
+                context: context,
+              );
               return SfDataGridTheme(
                 data: SfDataGridThemeData(
                   gridLineColor: Color(ColorConstants.silverChalice),

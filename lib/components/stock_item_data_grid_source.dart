@@ -1,12 +1,18 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:price_list/constants/constants.dart';
 import 'package:price_list/models/models.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class StockItemDataGridSource extends DataGridSource {
-  StockItemDataGridSource({required List<StockItems> data}) {
+  final BuildContext context;
+
+  StockItemDataGridSource({
+    required List<StockItems> data,
+    required this.context,
+  }) {
     _stockItemData = data
         .map<DataGridRow>(
           (e) => DataGridRow(
@@ -73,49 +79,85 @@ class StockItemDataGridSource extends DataGridSource {
                     fit: BoxFit.fill,
                   ),
                 )
-              : const Icon(Icons.image_not_supported, color: Colors.grey),
+              : const Icon(
+                  Icons.image_not_supported,
+                  color: Color(ColorConstants.stacks),
+                ),
         ),
 
         // productName
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text(row.getCells()[1].value.toString()),
+          child: Text(
+            row.getCells()[1].value.toString(),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         // stockItem
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text(row.getCells()[2].value.toString()),
+          child: Text(
+            toCurrencyString(
+              row.getCells()[2].value.toString(),
+              mantissaLength: 0,
+            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         // marketPrice
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text(row.getCells()[3].value.toString()),
+          child: Text(
+            toCurrencyString(row.getCells()[3].value.toString()),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         // profitMargin
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text("${row.getCells()[4].value}%"),
+          child: Text(
+            "${toCurrencyString(row.getCells()[4].value.toString())}%",
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         // profitMargin
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text("${row.getCells()[5].value}%"),
+          child: Text(
+            toCurrencyString(row.getCells()[5].value.toString()),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         // profitMargin
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text("${row.getCells()[6].value}%"),
+          child: Text(
+            toCurrencyString(row.getCells()[6].value.toString()),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Color(ColorConstants.black),
+            ),
+          ),
         ),
 
         Container(
@@ -136,10 +178,9 @@ class StockItemDataGridSource extends DataGridSource {
         alignment: Alignment.center,
         child: Text(
           'Product\nImage',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -147,15 +188,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'productName',
-      width: 300,
+      width: MediaQuery.of(context).size.width * 0.20,
       label: Container(
         alignment: Alignment.center,
         child: Text(
           'Product Name',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -163,15 +203,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'stockItem',
-      width: 100,
+      width: 110,
       label: Container(
         alignment: Alignment.center,
         child: Text(
           'Stock\nItem',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -179,14 +218,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'marketPrice',
+      width: MediaQuery.of(context).size.width * 0.13,
       label: Container(
         alignment: Alignment.center,
         child: Text(
           'Market Price',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -194,14 +233,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'profitMargin',
+      width: 110,
       label: Container(
         alignment: Alignment.center,
         child: Text(
-          'Profit Margin(%)',
-          style: TextStyle(
+          'Profit\nMargin',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -209,14 +248,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'sellingPrice',
+      width: MediaQuery.of(context).size.width * 0.13,
       label: Container(
         alignment: Alignment.center,
         child: Text(
           'Selling Price',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -224,14 +263,14 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'profitPerItem',
+      width: MediaQuery.of(context).size.width * 0.11,
       label: Container(
         alignment: Alignment.center,
         child: Text(
-          'Profit per Item',
-          style: TextStyle(
+          'Profit per\nItem',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
@@ -244,10 +283,9 @@ class StockItemDataGridSource extends DataGridSource {
         alignment: Alignment.center,
         child: Text(
           'Actions',
-          style: TextStyle(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
-            fontSize: SizeConstants.titleMedium,
           ),
           textAlign: TextAlign.center,
         ),
