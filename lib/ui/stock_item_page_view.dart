@@ -100,7 +100,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                   gridLineColor: Color(ColorConstants.silverChalice),
                   gridLineStrokeWidth: 1.5,
                   selectionColor: Color(ColorConstants.lightGreen),
-                  frozenPaneLineColor: Color(ColorConstants.silverChalice),
+                  frozenPaneLineColor: Colors.transparent,
                   sortIconColor: Color(ColorConstants.black),
                   headerColor: Color(ColorConstants.paleLemon),
                   headerHoverColor: Color(ColorConstants.lightGreen),
@@ -113,7 +113,7 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                     columns: dataSource.columns,
 
                     //utils
-                    rowHeight: 80,
+                    rowHeight: 70,
                     controller: _controller,
 
                     columnWidthMode:
@@ -127,7 +127,11 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                     allowTriStateSorting: true,
                     onCellTap: (details) {
                       // Check if user tapped a header cell (rowIndex = 0)
-                      if (details.rowColumnIndex.rowIndex == 0) {
+                      if (details.rowColumnIndex.rowIndex == 0 &&
+                          details.rowColumnIndex.columnIndex !=
+                              0 && // not first column
+                          details.rowColumnIndex.columnIndex !=
+                              dataSource.columns.length - 1) {
                         // After sorting happens, schedule scroll reset
                         Future.delayed(Duration(milliseconds: 50), () {
                           _controller.scrollToVerticalOffset(0);
@@ -136,8 +140,8 @@ class _StockItemPageViewState extends State<StockItemPageView> {
                     },
 
                     //styling
-                    gridLinesVisibility: GridLinesVisibility.both,
-                    headerGridLinesVisibility: GridLinesVisibility.both,
+                    gridLinesVisibility: GridLinesVisibility.horizontal,
+                    headerGridLinesVisibility: GridLinesVisibility.horizontal,
                   ),
                 ),
               );

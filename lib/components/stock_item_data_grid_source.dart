@@ -163,7 +163,12 @@ class StockItemDataGridSource extends DataGridSource {
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
-          child: Text("Action Here"),
+          child: PopupMenuButton(
+            iconSize: SizeConstants.mediumIcon,
+            itemBuilder: (BuildContext context) {
+              return [];
+            },
+          ),
         ),
       ],
     );
@@ -188,7 +193,7 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'productName',
-      width: MediaQuery.of(context).size.width * 0.20,
+      width: MediaQuery.of(context).size.width * 0.21,
       label: Container(
         alignment: Alignment.center,
         child: Text(
@@ -218,7 +223,7 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'marketPrice',
-      width: MediaQuery.of(context).size.width * 0.13,
+      width: MediaQuery.of(context).size.width * 0.14,
       label: Container(
         alignment: Alignment.center,
         child: Text(
@@ -248,7 +253,7 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'sellingPrice',
-      width: MediaQuery.of(context).size.width * 0.13,
+      width: MediaQuery.of(context).size.width * 0.14,
       label: Container(
         alignment: Alignment.center,
         child: Text(
@@ -263,7 +268,7 @@ class StockItemDataGridSource extends DataGridSource {
     ),
     GridColumn(
       columnName: 'profitPerItem',
-      width: MediaQuery.of(context).size.width * 0.11,
+      width: MediaQuery.of(context).size.width * 0.12,
       label: Container(
         alignment: Alignment.center,
         child: Text(
@@ -279,10 +284,11 @@ class StockItemDataGridSource extends DataGridSource {
     GridColumn(
       columnName: 'actions',
       allowSorting: false,
+      width: 60,
       label: Container(
         alignment: Alignment.center,
         child: Text(
-          'Actions',
+          '',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: Color(ColorConstants.black),
             fontWeight: FontWeight.bold,
