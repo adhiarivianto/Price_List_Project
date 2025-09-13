@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:price_list/constants/constants.dart';
 import 'package:price_list/models/models.dart';
+import 'package:price_list/storages/boxes.dart';
+import 'package:uuid/uuid.dart';
 
 class StockItemAddEditForm extends StatefulWidget {
   final StockItems? savedData;
@@ -350,13 +352,9 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
           ),
         ),
         TextButton(
-          onPressed: () {
+          onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              print('productName: $_nameInput');
-              print('marketPrice: $_priceInput');
-              print('profitMargin: $_marginInput');
-              print('stockItem: $_stockInput');
-
+              await _submitForm();
               Navigator.of(context).pop();
             }
           },
@@ -418,5 +416,19 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
         ),
       ),
     );
+  }
+
+  Future<void> _submitForm() async {
+    final StockItems payload = StockItems(
+      productId: Uuid().v4(),
+      productImage: _imageInput,
+      productName: _nameInput,
+      marketPrice: _priceInput,
+      profitMargin: _marginInput,
+      stockItem: _stockInput,
+    );
+
+    final method = Boxes.getStockItemBoxMethod();
+    await method.add(payload);
   }
 }

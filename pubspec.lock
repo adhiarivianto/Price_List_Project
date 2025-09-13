@@ -392,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.4"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: "3df61194eb431efc39c4ceba583b95633a403f46c9fd341e550ce0bfa50e9aa5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.2"
   io:
     dependency: transitive
     description:
@@ -653,6 +661,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.1"
+  sprintf:
+    dependency: transitive
+    description:
+      name: sprintf
+      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -685,6 +701,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  syncfusion_flutter_core:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_core
+      sha256: "2d878bce96c4fd1092205a4f72b328f7f05d86b27c3bd55db7fd440e6017352a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "31.1.19"
+  syncfusion_flutter_datagrid:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_datagrid
+      sha256: f46935aca20faaf4d00721edb6c42cb162dd7a54cf6e0dc44e92b06888fd4cc8
+      url: "https://pub.dev"
+    source: hosted
+    version: "31.1.19"
   term_glyph:
     dependency: transitive
     description:
@@ -717,6 +749,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      sha256: a5be9ef6618a7ac1e964353ef476418026db906c4facdedaa299b7a2e71690ff
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.1"
   vector_math:
     dependency: transitive
     description:

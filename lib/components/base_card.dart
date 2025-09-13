@@ -3,21 +3,34 @@ import 'package:price_list/constants/constants.dart';
 
 class BaseCard extends StatelessWidget {
   final Widget cardContent;
+  final bool isExpanded;
 
-  const BaseCard({super.key, required this.cardContent});
+  const BaseCard({
+    super.key,
+    required this.cardContent,
+    required this.isExpanded,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Color(ColorConstants.funGreen),
-          borderRadius: BorderRadius.circular(15), // round all corners
-        ),
-        child: Padding(padding: EdgeInsets.all(10), child: cardContent),
-      ),
-    );
+    return isExpanded
+        ? Expanded(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(ColorConstants.funGreen),
+                borderRadius: BorderRadius.circular(15), // round all corners
+              ),
+              child: Padding(padding: EdgeInsets.all(15), child: cardContent),
+            ),
+          )
+        : Container(
+            decoration: BoxDecoration(
+              color: Color(ColorConstants.funGreen),
+              borderRadius: BorderRadius.circular(15), // round all corners
+            ),
+            child: Padding(padding: EdgeInsets.all(15), child: cardContent),
+          );
   }
 }

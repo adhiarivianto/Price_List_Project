@@ -1,6 +1,8 @@
 class ColorConstants {
   static const int pastelGreen = 0xFF5ADA86;
   static const int funGreen = 0xFF006e49;
+  static const int lightGreen = 0xFFDAF1DE;
+  static const int paleLemon = 0xFFF7F6BB;
   static const int wildSand = 0xFFF7F7F7;
   static const int black = 0xFF010101;
   static const int silverChalice = 0xFFb0b0b0;

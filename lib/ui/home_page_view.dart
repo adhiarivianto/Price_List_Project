@@ -15,6 +15,7 @@ class HomePageView extends StatefulWidget {
 class _HomePageViewState extends State<HomePageView>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+  final ScrollController _scrollController = ScrollController();
   int _selectedIndex = 0;
 
   @override
@@ -28,6 +29,7 @@ class _HomePageViewState extends State<HomePageView>
   void dispose() {
     Hive.close();
     _tabController.dispose();
+    _scrollController.dispose();
 
     super.dispose();
   }
@@ -35,87 +37,78 @@ class _HomePageViewState extends State<HomePageView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(ColorConstants.funGreen),
-        title: Text(
-          'Price Listing App',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: Color(ColorConstants.wildSand),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: DefaultTabController(
-            length: 2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomSlidingSegmentedControl(
-                      initialValue: _selectedIndex + 1,
-                      children: {
-                        1: Text(
-                          'Stock Item',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                color: (_selectedIndex + 1) == 1
-                                    ? Color(ColorConstants.wildSand)
-                                    : Color(ColorConstants.tundora),
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        2: Text(
-                          'Monthly Report',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                color: (_selectedIndex + 1) == 2
-                                    ? Color(ColorConstants.wildSand)
-                                    : Color(ColorConstants.tundora),
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                      },
-                      onValueChanged: (v) {
-                        _selectedIndex = v - 1;
-                        setState(() {});
-                      },
-                      decoration: BoxDecoration(
-                        color: Color(ColorConstants.silverChalice),
-                        borderRadius: BorderRadius.circular(
-                          SizeConstants.standardRadius,
-                        ),
-                      ),
-                      innerPadding: EdgeInsets.zero,
-                      fixedWidth: 200,
-                      thumbDecoration: BoxDecoration(
-                        color: Color(ColorConstants.funGreen),
-                        borderRadius: BorderRadius.circular(
-                          SizeConstants.standardRadius,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            spreadRadius: 1.0,
-                            offset: Offset(0.0, 2.0),
+      body: Padding(
+        padding: const EdgeInsets.only(right: 4),
+        child: Scrollbar(
+          controller: _scrollController,
+          thumbVisibility: true,
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 40),
+            child: DefaultTabController(
+              length: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomSlidingSegmentedControl(
+                        initialValue: _selectedIndex + 1,
+                        children: {
+                          1: Text(
+                            'Stock Item',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: (_selectedIndex + 1) == 1
+                                      ? Color(ColorConstants.wildSand)
+                                      : Color(ColorConstants.tundora),
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
-                        ],
+                          2: Text(
+                            'Monthly Report',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: (_selectedIndex + 1) == 2
+                                      ? Color(ColorConstants.wildSand)
+                                      : Color(ColorConstants.tundora),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        },
+                        onValueChanged: (v) {
+                          _selectedIndex = v - 1;
+                          setState(() {});
+                        },
+                        decoration: BoxDecoration(
+                          color: Color(ColorConstants.silverChalice),
+                          borderRadius: BorderRadius.circular(
+                            SizeConstants.standardRadius,
+                          ),
+                        ),
+                        innerPadding: EdgeInsets.zero,
+                        fixedWidth: 200,
+                        thumbDecoration: BoxDecoration(
+                          color: Color(ColorConstants.funGreen),
+                          borderRadius: BorderRadius.circular(
+                            SizeConstants.standardRadius,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 3.0,
+                              spreadRadius: 1.0,
+                              offset: Offset(0.0, 2.0),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                Expanded(
-                  child: IndexedStack(
-                    index: _selectedIndex,
-                    children: _tabPages,
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 15),
+                  IndexedStack(index: _selectedIndex, children: _tabPages),
+                ],
+              ),
             ),
           ),
         ),

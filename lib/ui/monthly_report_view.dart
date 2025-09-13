@@ -38,6 +38,7 @@ class _MonthlyReportViewState extends State<MonthlyReportView> {
   @override
   Widget build(BuildContext context) {
     return BaseCard(
+      isExpanded: false,
       cardContent: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
