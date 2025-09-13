@@ -70,7 +70,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Add New Item"),
+      title: const Text('Add New Item'),
       backgroundColor: const Color(ColorConstants.wildSand),
       content: ConstrainedBox(
         constraints: BoxConstraints(
@@ -90,7 +90,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Please enter product name.";
+                      return 'Please enter product name.';
                     }
                     return null;
                   },
@@ -99,7 +99,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                     setState(() {});
                   },
                   decoration: InputDecoration(
-                    labelText: "Product Name",
+                    labelText: 'Product Name',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         SizeConstants.formFieldRadius,
@@ -118,7 +118,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         inputFormatters: [CurrencyInputFormatter()],
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
-                            return "Please enter market price.";
+                            return 'Please enter market price.';
                           }
                           return null;
                         },
@@ -133,7 +133,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                           setState(() {});
                         },
                         decoration: InputDecoration(
-                          labelText: "Market Price",
+                          labelText: 'Market Price',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                               SizeConstants.formFieldRadius,
@@ -163,7 +163,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         inputFormatters: [CurrencyInputFormatter()],
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
-                            return "Please enter profit margin.";
+                            return 'Please enter profit margin.';
                           }
                           return null;
                         },
@@ -178,7 +178,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                           setState(() {});
                         },
                         decoration: InputDecoration(
-                          labelText: "Profit Margin(%)",
+                          labelText: 'Profit Margin(%)',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                               SizeConstants.formFieldRadius,
@@ -216,7 +216,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                         ],
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
-                            return "Please enter stock quantity.";
+                            return 'Please enter stock quantity.';
                           }
                           return null;
                         },
@@ -225,7 +225,7 @@ class _StockItemAddEditFormState extends State<StockItemAddEditForm> {
                           setState(() {});
                         },
                         decoration: InputDecoration(
-                          labelText: "Stock Quantity",
+                          labelText: 'Stock Quantity',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                               SizeConstants.formFieldRadius,

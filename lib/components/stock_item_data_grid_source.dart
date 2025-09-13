@@ -129,7 +129,7 @@ class StockItemDataGridSource extends DataGridSource {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(SizeConstants.formSmallSpacing),
           child: Text(
-            "${toCurrencyString(row.getCells()[4].value.toString())}%",
+            '${toCurrencyString(row.getCells()[4].value.toString())}%',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: const Color(ColorConstants.black),
             ),

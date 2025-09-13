@@ -30,9 +30,9 @@ class _StockItemPageViewState extends State<StockItemPageView> {
             children: [
               Row(
                 children: [
-                  ElevatedButton(onPressed: () {}, child: const Text("Left 1")),
+                  ElevatedButton(onPressed: () {}, child: const Text('Left 1')),
                   const SizedBox(width: 8),
-                  ElevatedButton(onPressed: () {}, child: const Text("Left 2")),
+                  ElevatedButton(onPressed: () {}, child: const Text('Left 2')),
                 ],
               ),
               const Spacer(),

@@ -47,9 +47,9 @@ class _MonthlyReportViewState extends State<MonthlyReportView> {
               child: Image.memory(imageBytes!, fit: BoxFit.cover),
             )
           else
-            const Text("No image selected"),
+            const Text('No image selected'),
           const SizedBox(height: 20),
-          ElevatedButton(onPressed: pickImage, child: const Text("Pick Image")),
+          ElevatedButton(onPressed: pickImage, child: const Text('Pick Image')),
         ],
       ),
     );
